@@ -16,7 +16,7 @@ L'objectif du projet est de permettre à un étudiant d'interagir avec un chatbo
     - **app.py** : fichier principal contenant les différentes routes Flask du site
     - **Chatbot.py** : contient les fonctions pour interagir avec le LLM de Mistral
     - **requirements.txt** : liste des bibliothèques Python nécessaires au fonctionnement du site
-    - **UE_Electrical_Engineering_support_de_cours_traitement_du_signal** : Le cours de traitement du signal
+  
 
 ## Utilisation du site
 
@@ -57,4 +57,5 @@ Le chatbot propose deux modes de fonctionnement :
 ## Licence
 
 Ce projet est mis à disposition sous la licence Creative Commons BY-NC-SA 4.0
+
 Vous êtes libre de partager et d’adapter le code, à condition de citer les auteurs, de ne pas en faire un usage commercial, et de le redistribuer sous la même licence.
