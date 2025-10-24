@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accueil – Assistant Pédagogique</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Merci d'insérer un cours pour débuter la conversation</h1>
+    <form id="upload-form">
+      <input type="file" id="file-input" name="file" accept=".pdf,.txt">
+      <label for="file-input" class="label-file">Joindre un cours</label>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('upload-form');
+    const fileInput = document.getElementById('file-input');
+  
+    fileInput.addEventListener('change', async () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+  
+      const formData = new FormData();
+      formData.append('file', file);
+  
+      try {
+        const resp = await fetch('/upload_course', {
+          method: 'POST',
+          body: formData,
+          credentials: 'include'    
+        });
+        const data = await resp.json();
+        if (!resp.ok) {
+          alert(data.error || 'Erreur lors de l’upload');
+          return;
+        }
+        // Redirection vers la page de chat une fois le cours chargé
+        window.location.href = '/';
+      } catch (err) {
+        alert('Échec de la connexion au serveur');
+        console.error(err);
+      }
+    });
+    
+  </script>
+  
+</body>
+</html>

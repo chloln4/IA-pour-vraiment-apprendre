@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistant Pédagogique</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <button id="new-conversation-btn">Nouvelle conversation</button>
+    </div>
+
+    <div class="chat-container">
+        <div class="chat-window" id="chat-window"></div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Écrivez votre message...">
+            <button id="send-button">Envoyer</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true,
+    packages: {'[+]': ['ams']}
+  },
+  options: {
+    skipHtmlTags: {'[-]': ['script', 'noscript', 'style', 'textarea']},
+    ignoreHtmlClass: 'nostem|no-math',
+    processHtmlClass: 'math|message-content'
+  },
+  startup: {
+    ready: () => {
+      MathJax.startup.defaultReady();
+      MathJax.startup.promise.then(() => {
+        console.log('MathJax initialisé');
+      });
+    }
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+</body>
+</html>
